@@ -19,7 +19,6 @@ services:
         volumes:
             - ./dump.sql:/docker-entrypoint-initdb.d/dump.sql
 
-
     wp_pma:
         image: phpmyadmin
         restart: always
