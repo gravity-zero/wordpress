@@ -9,7 +9,7 @@
 					<img src="<?php the_post_thumbnail_url(); ?>" class="card-img-top" alt="...">
 					<div class="card-body">
 
-						<?php if (get_post_meta(get_the_ID(), 'wphetic_sponso', true)) : ?>
+						<?php if (get_post_meta(get_the_ID(), 'futur_sponso', true)) : ?>
 							<div class="alert alert-primary" role="alert">
 								Contenu Sponsorisé
 							</div>

@@ -14,5 +14,10 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+                <?php if($_SERVER['REQUEST_URI'] !== get_home_url(). "/ajouter-recette/"): ?>
+                    <a href="<?= get_home_url(). "/ajouter-recette/" ?>"><button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    Ajouter une recette
+                </button></a>
+                <?php endif ?>
             </div>
         <div class="container p-5">
