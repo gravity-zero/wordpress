@@ -8,6 +8,7 @@ add_action( 'wp_head', function () {
 	echo '<link rel="icon" type="image/png" href="' . get_stylesheet_directory_uri() . '/assets/images/favicon.png"/>';
 } );
 
+
 add_action( 'admin_post_new_recette_form', function () {
 	if ( ! wp_verify_nonce( $_POST['random_nonce'], 'random_action' ) ) {
 		die( "C'est pas beau de ne pas passer par le formulaire" );
@@ -15,6 +16,8 @@ add_action( 'admin_post_new_recette_form', function () {
 	//if(!current_user_can('manage_events')) die("Tu n'as pas les droits pour effectuer cette action");
 
 	$post_args = [
+        'post_type' => '',
+
 		'post_title'      => $_POST['title'],
 		'post_content'    => $_POST['content'],
 		'post_status'     => 'pending',
@@ -26,27 +29,24 @@ add_action( 'admin_post_new_recette_form', function () {
 
 	$images = $_FILES['images'];
 
-	var_dump(count( $_FILES['images'] ));
 	if ( count($_FILES['images'])  > 1) {
 		$images = $_FILES['images'];
-		$i=0;
-		foreach ($images as $key => $image) {
-			var_dump($image);
-			if ($image) {
+		for($i=0; $i < count($images['name']); $i++) {
+			if ($images) {
 				$file = array(
 					'name' => $images['name'][$i],
 					'type' => $images['type'][$i],
+					'full_path' => $images['full_path'][$i],
 					'tmp_name' => $images['tmp_name'][$i],
 					'error' => $images['error'][$i],
 					'size' => $images['size'][$i]
 				);
-				$upload_array = ["my_file_upload" => $file];
-				foreach ($upload_array as $file => $array) {
+                $_FILES = ["my_file_upload" => $file];
+				foreach ($_FILES as $file => $array) {
 					$image_id = media_handle_upload($file, $postId);
 					update_post_meta($postId, '_my_file_upload', $image_id);
 				}
 			}
-			$i++;
 		}
 	}
 
@@ -82,6 +82,13 @@ function ofourno_theme_support() {
 		show_admin_bar( false );
 	}
 }
+
+add_action( 'after_switch_theme', function(){
+    add_role('moderator', 'moderator', [
+        'manage_events' => true,
+        'read' => true
+    ]);
+});
 
 add_action( 'init', function () {
 
