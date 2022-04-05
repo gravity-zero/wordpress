@@ -16,8 +16,7 @@ add_action('wp_enqueue_scripts', function () {
 
 add_filter('login_headerurl', function ($header_url)
     {
-        var_dump($header_url);
-        return 'https://www.google.fr';
+        return home_url();
     }
 );
 
