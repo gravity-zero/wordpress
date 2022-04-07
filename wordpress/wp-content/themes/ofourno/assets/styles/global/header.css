@@ -1,0 +1,12 @@
+.header {
+  padding: 16px;
+}
+
+.icon {
+  margin-left: 12px;
+}
+
+.title {
+  color: #dd7d85;
+  transform: translate(73px, 10px);
+}
