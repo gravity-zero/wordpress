@@ -54,6 +54,7 @@ add_action( 'admin_post_new_recette_form', function () {
 	wp_redirect( get_post_permalink( $postId ) );
 } );
 
+
 function get_custom_404() {
 	if ( is_404() ) {
 		add_action( 'wp_enqueue_scripts', function () {
