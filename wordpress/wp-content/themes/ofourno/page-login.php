@@ -16,7 +16,9 @@
 			<input class="inputLogin" type="password" placeholder="mot de pass" name="password">
 		</div>
 		<div class="mb-3">
+		<a href="/login">			
 			<button type="submit" class="btn btnLogin">Se connecter</button>	
+		</a>
 		</div>
 			<div class="">Vous n'avez pas de compte ? 
 				<a href="/register" class="button">S'inscrire</a>
