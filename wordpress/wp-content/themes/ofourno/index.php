@@ -1,6 +1,16 @@
 <?php get_header(); ?>
 
 	<div class="hero">
+        <div class="hero-text">
+            <p class="hero-p">Recette du jour</p>
+            <h1>Gambas au curry</h1>
+            <p>Laissez vous tenter par notre sélection du jour
+                à base de gambas et de curry.</p>
+            <button class="btn hero-btn" type="button">
+                Découvrir
+            </button>
+        </div>
+
 	</div>
 
 <?php if($_SERVER['REQUEST_URI'] !== get_home_url(). "/ajouter-recette/"): ?>

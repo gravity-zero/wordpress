@@ -11,6 +11,28 @@
   text-decoration: underline;
 }
 
+/* TITLE AND TEXTS */
+
+h1 {
+  font-weight: 600;
+  font-size: 23px;
+  margin-bottom: 0;
+  color : white;
+}
+
+h2 {
+  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 0;
+}
+
+p {
+  color : white;
+  font-weight : 400;
+  font-size: 16px;
+}
+
+
 /* .card-text {
   margin-bottom: 12px;
 } */
