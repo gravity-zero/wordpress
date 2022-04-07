@@ -22,7 +22,9 @@
 	<div>
 		<a class="button">Mot de passe oublié ?</a>
 	</div>
-	<button class="btn btnLogin" type="submit" class="">S'inscrire</button>
+	<a href="/register">
+		<button class="btn btnLogin" type="submit" class="">S'inscrire</button>
+	</a>
 </form>
 
 <?php get_footer(); ?>
