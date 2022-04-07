@@ -13,26 +13,8 @@
 <body>
     <section class="header d-flex justify-content-between align-items-center">
 
-<<<<<<< HEAD
-        <?php wp_head(); ?>
-    </head>
-    <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <?php if($_SERVER['REQUEST_URI'] !== get_home_url(). "/ajouter-recette/"): ?>
-                    <a href="<?= get_home_url(). "/ajouter-recette/" ?>">
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    Ajouter une recette
-                </button>
-                    </a>
-                <?php endif ?>
-=======
             <div class="icon">
                 <a href="/"><img src="<?= home_url(); ?>/wp-content/uploads/2022/04/favicon.png" alt="ofourno logo'" /></a>
->>>>>>> feat: add style and assets
             </div>
             <h1 class="title">Ôfourno</h1></div>     
 
