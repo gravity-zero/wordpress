@@ -1,0 +1,33 @@
+.hero {
+  height: 50vh;
+  width: 100vw;
+  background-image: url("../../../../../uploads/2022/04/hero.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-bottom: 4%;
+}
+
+.cardContainer {
+  margin-top: 4% !important;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 548px;
+  height: 300px;
+  position: relative;
+  margin-right: 18px;
+  margin-top: 16px;
+}
+
+.linkBtn {
+  position: absolute;
+  bottom: 12px;
+}
+
+.btnInfo {
+  height: 48px;
+  width: 174px;
+  right: 8px;
+}

@@ -1,0 +1,14 @@
+.formReceip {
+  width: 40%;
+  margin: 40px;
+}
+
+.inputFormReceip {
+  outline: none;
+}
+
+.btnSubmit {
+  width: 157px;
+  height: 53px;
+  margin-top: 70px;
+}

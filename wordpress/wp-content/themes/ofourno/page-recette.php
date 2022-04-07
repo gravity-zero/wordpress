@@ -1,7 +1,12 @@
 <?php
 
 get_header(); ?>
+<<<<<<< HEAD
     <form action="<?= admin_url('admin-post.php'); ?>" method="post" enctype="multipart/form-data">
+=======
+
+    <form class="formReceip" action="<?= admin_url('admin-post.php'); ?>" method="post" enctype="multipart/form-data">
+>>>>>>> feat: add style and assets
         <input type="hidden" name="action" value="new_recette_form">
         <?php wp_nonce_field('random_action', 'random_nonce'); ?>
         <?php wp_referer_field(); ?>
@@ -22,7 +27,7 @@ get_header(); ?>
             <input type="text" class="form-control" id="ingredient" name="ingredient">
         </div>
         <div>
-            <input type="submit" value="Soumettre">
+        <input class="btn btnSubmit" type="submit" value="Soumettre">
         </div>
     </form>
 <?php get_footer(); ?>

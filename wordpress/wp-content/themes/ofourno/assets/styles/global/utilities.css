@@ -1,0 +1,29 @@
+.button {
+  color: black;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.button:hover {
+  color: #dd7d85 !important;
+  text-decoration: underline;
+}
+
+/* .card-text {
+  margin-bottom: 12px;
+} */
+
+.btn {
+  background-color: #dd7d85 !important;
+  outline: none;
+  border: none !important;
+  font-size: 14px !important;
+  color: white !important;
+  height: 60px;
+  width: 248px;
+  padding: 0;
+  text-transform: uppercase;
+  border-radius: 16px;
+}
