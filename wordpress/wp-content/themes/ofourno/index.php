@@ -13,10 +13,11 @@
 	</div>
 <?php endif ?>
 
+
+<?php $loop = new WP_Query( array( 'post_type' => 'recette', 'posts_per_page' => '6' ) ); ?>
 <?php if (have_posts()) : ?>
 	<div class="cardContainer">
-		<?php while (have_posts()) : ?>
-			<?php the_post(); ?>
+		<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
 
 				<div class="card">
 
@@ -50,3 +51,4 @@
 
 
 <?php get_footer(); ?>
+
