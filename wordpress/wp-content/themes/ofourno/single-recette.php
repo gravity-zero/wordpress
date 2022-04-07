@@ -2,7 +2,7 @@
 
 <?php if (have_posts()) : ?>
 	<?php while (have_posts()) : ?>
-		<?php the_post(); ?>
+		<?php the_post(); var_dump($_POST); ?>
 
 		<div class="card mb-3">
 			<img src="<?php the_post_thumbnail_url(); ?>" class="card-img-top" alt="...">

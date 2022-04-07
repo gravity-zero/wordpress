@@ -8,6 +8,7 @@ add_action( 'wp_head', function () {
 	echo '<link rel="icon" type="image/png" href="' . get_stylesheet_directory_uri() . '/assets/images/favicon.png"/>';
 } );
 
+
 add_action( 'admin_post_new_recette_form', function () {
 	if ( ! wp_verify_nonce( $_POST['random_nonce'], 'random_action' ) ) {
 		die( "C'est pas beau de ne pas passer par le formulaire" );
@@ -15,6 +16,7 @@ add_action( 'admin_post_new_recette_form', function () {
 	//if(!current_user_can('manage_events')) die("Tu n'as pas les droits pour effectuer cette action");
 
 	$post_args = [
+        'post_type' => 'recette',
 		'post_title'      => $_POST['title'],
 		'post_content'    => $_POST['content'],
 		'post_status'     => 'pending',
@@ -25,31 +27,30 @@ add_action( 'admin_post_new_recette_form', function () {
 	$postId = wp_insert_post( $post_args );
 
 	$images = $_FILES['images'];
-
-	var_dump(count( $_FILES['images'] ));
+    //IL FAUDRAIT RENOMMER LES IMAGES UPLOADÉES
 	if ( count($_FILES['images'])  > 1) {
 		$images = $_FILES['images'];
-		$i=0;
-		foreach ($images as $key => $image) {
-			var_dump($image);
-			if ($image) {
+		for($i=0; $i < count($images['name']); $i++) {
+			if ($images) {
 				$file = array(
 					'name' => $images['name'][$i],
 					'type' => $images['type'][$i],
+					'full_path' => $images['full_path'][$i],
 					'tmp_name' => $images['tmp_name'][$i],
 					'error' => $images['error'][$i],
 					'size' => $images['size'][$i]
 				);
-				$upload_array = ["my_file_upload" => $file];
-				foreach ($upload_array as $file => $array) {
-					$image_id = media_handle_upload($file, $postId);
-					update_post_meta($postId, '_my_file_upload', $image_id);
+                $_FILES = ["my_file_upload" => $file];
+				foreach ($_FILES as $file => $array) {
+                    if($file){
+                        $image_id = media_handle_upload($file, $postId);
+                        if(!(int)$image_id) die("AFFICHER ERREUR WP_ERROR:");
+                        set_post_thumbnail($postId, $image_id); //La dernière image sera l'image par défaut
+                    }
 				}
 			}
-			$i++;
 		}
 	}
-
 	wp_redirect( get_post_permalink( $postId ) );
 } );
 
@@ -78,20 +79,58 @@ function ofourno_theme_support() {
 	add_theme_support( 'title-tag' );
 	add_theme_support( 'post-thumbnails' );
 
-	if ( ! current_user_can( 'subscriber' ) && ! is_admin() ) {
+	if (!current_user_can('subscriber') && !is_admin()) {
 		show_admin_bar( false );
 	}
 }
 
+add_action( 'after_switch_theme', function(){
+    add_role('moderator', 'moderator', [
+        'manage_events' => true,
+        'read' => true,
+        'revisions' => true
+    ]);
+});
+
 add_action( 'init', function () {
+
+    $labels = array(
+        // Le nom au pluriel
+        'name'                => 'Recettes',
+        // Le nom au singulier
+        'singular_name'       => 'Recette',
+        // Le libellé affiché dans le menu
+        'menu_name'           => 'Modération Recettes',
+        // Les différents libellés de l'administration
+        'all_items'           => 'Toutes les Recettes',
+        'view_item'           => 'Voir les Recettes',
+        'add_new_item'        => 'Ajouter une nouvelle une Recette',
+        'add_new'             => 'Ajouter',
+        'edit_item'           => 'Editer une Recette',
+        'update_item'         => 'Modifier une Recette',
+        'search_items'        => 'Rechercher une Recette',
+        'not_found'           => 'Non trouvée',
+        'not_found_in_trash'  => 'Non trouvée dans la corbeille'
+    );
 
 	$postArgs = [
 		'label'           => 'Recettes',
+        'labels'          => $labels,
 		'public'          => true,
 		'show_in_rest'    => true,
 		'capability_type' => 'post',
-		'has_archive'     => true
+		'has_archive'     => true,
+        'supports'        => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields'),
+        'rewrite'		  => array( 'slug' => 'Recettes')
 	];
 
-	register_post_type( 'recette', $postArgs );
+	register_post_type('recette', $postArgs);
 } );
+
+add_action("load-post-new.php", 'block_post');
+
+function block_post()
+{
+    if($_GET["post_type"] == "recette")
+        wp_redirect(get_home_url(). "/ajouter-recette/");
+}

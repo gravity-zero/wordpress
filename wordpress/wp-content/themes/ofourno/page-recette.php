@@ -1,11 +1,6 @@
 <?php
-/**
- * Template Name: recette
- * Template Post Type: post, recettes
- */
 
 get_header(); ?>
-
     <form action="<?= admin_url('admin-post.php'); ?>" method="post" enctype="multipart/form-data">
         <input type="hidden" name="action" value="new_recette_form">
         <?php wp_nonce_field('random_action', 'random_nonce'); ?>
@@ -30,5 +25,4 @@ get_header(); ?>
             <input type="submit" value="Soumettre">
         </div>
     </form>
-
 <?php get_footer(); ?>
