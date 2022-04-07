@@ -1,0 +1,30 @@
+.cardContainer {
+    margin-top: 4% !important;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card {
+    width: 35%;
+    height: auto;
+    margin-right: 18px;
+    margin-top: 16px;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.linkBtn {
+    position: absolute;
+    bottom: 12px;
+}
+
+.btnInfo {
+    height: 48px;
+    width: 174px;
+    right: 8px;
+}
