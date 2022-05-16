@@ -28,8 +28,7 @@ add_action( 'admin_post_new_recette_form', function () {
 
 	$images = $_FILES['images'];
     //IL FAUDRAIT RENOMMER LES IMAGES UPLOADÉES
-	if ( count($_FILES['images'])  > 1) {
-		$images = $_FILES['images'];
+	if ( count($images) > 1) {
 		for($i=0; $i < count($images['name']); $i++) {
 			if ($images) {
 				$file = array(
@@ -44,16 +43,26 @@ add_action( 'admin_post_new_recette_form', function () {
 				foreach ($_FILES as $file => $array) {
                     if($file){
                         $image_id = media_handle_upload($file, $postId);
-                        if(!(int)$image_id) die("AFFICHER ERREUR WP_ERROR:");
+                        if(is_wp_error($image_id)){ print_error_message($image_id->get_error_message()); die();}
+                        if(!(int)$image_id) die("We have a situation :o ");
+
                         set_post_thumbnail($postId, $image_id); //La dernière image sera l'image par défaut
                     }
 				}
 			}
 		}
-	}
+	}else {
+        var_dump("J'ai une seule image");
+        die();
+    }
 	wp_redirect( get_post_permalink( $postId ) );
 } );
 
+
+function print_error_message($error): void
+{
+    echo "<div id='error_message'><h1>". $error ."</h1></div>";
+}
 
 function get_custom_404() {
 	if ( is_404() ) {
@@ -65,9 +74,9 @@ function get_custom_404() {
 }
 
 
-		add_action( 'wp_enqueue_scripts', function () {
-			wp_enqueue_style( 'ofourno-custom-css', get_stylesheet_directory_uri() . '/assets/styles/style.css' );
-		} );
+add_action( 'wp_enqueue_scripts', function () {
+    wp_enqueue_style( 'ofourno-custom-css', get_stylesheet_directory_uri() . '/assets/styles/style.css' );
+} );
 
 
 
@@ -97,7 +106,7 @@ function ofourno_theme_support() {
 	}
 }
 
-add_action( 'after_switch_theme', function(){
+add_action('after_switch_theme', function(){
     add_role('moderator', 'moderator', [
         'manage_events' => true,
         'read' => true,

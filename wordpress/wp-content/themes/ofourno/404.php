@@ -219,7 +219,7 @@
 		<h1>
 			La page recherché n'existe pas <span><img src="http://danielwolf.cc/codepen/errorpage/sadFace.png"></span>
 			<br>
-			Retourner à l'accueil <a href="#">en cliquant ici</a>
+			Retourner à l'accueil <a href="<?= get_home_url() ?>">en cliquant ici</a>
 		</h1>
 	</div>
 

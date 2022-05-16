@@ -5,3 +5,9 @@
 @import "../styles/global/receipCard.css";
 @import "../styles/global/login.css";
 @import "../styles/global/footer.css";
+
+
+.single-recette{
+    display: flex;
+    justify-content: center;
+}
