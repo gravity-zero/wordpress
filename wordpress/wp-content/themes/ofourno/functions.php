@@ -28,7 +28,6 @@ add_action( 'admin_post_new_recette_form', function () {
 
 	$images = $_FILES['images'];
     //IL FAUDRAIT RENOMMER LES IMAGES UPLOADÉES
-	if ( count($images) > 1) {
 		for($i=0; $i < count($images['name']); $i++) {
 			if ($images) {
 				$file = array(
@@ -51,10 +50,7 @@ add_action( 'admin_post_new_recette_form', function () {
 				}
 			}
 		}
-	}else {
-        var_dump("J'ai une seule image");
-        die();
-    }
+
 	wp_redirect( get_post_permalink( $postId ) );
 } );
 
