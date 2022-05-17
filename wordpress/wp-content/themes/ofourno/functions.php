@@ -83,16 +83,6 @@ add_action( 'wp_enqueue_scripts', function () {
 	wp_enqueue_script( 'ofourno-bootstrap-js', 'https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js', [], false, true );
 } );
 
-// function additional_custom_styles() {
-// 	wp_enqueue_style( 'style', get_template_directory_uri() , '/style.css' ); 
-// }
-// add_action( 'wp_enqueue_style', 'additional_custom_styles' );
-
-// add_filter( 'login_headerurl', function () {
-// 	return home_url();
-// }
-// );
-
 function ofourno_theme_support() {
 	add_theme_support( 'title-tag' );
 	add_theme_support( 'post-thumbnails' );
@@ -145,10 +135,19 @@ add_action( 'init', function () {
 	register_post_type('recette', $postArgs);
 } );
 
-add_action("load-post-new.php", 'block_post');
+add_action("load-post-new.php", 'load_recette_form');
 
-function block_post()
+function load_recette_form()
 {
     if($_GET["post_type"] == "recette")
         wp_redirect(get_home_url(). "/ajouter-recette/");
 }
+
+add_action('login', function() {
+
+});
+
+add_filter('login_headerurl',
+    function ($header_url) {
+        return 'https://www.google.fr';
+    });

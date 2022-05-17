@@ -4,7 +4,7 @@
         <div class="hero-text">
             <p class="hero-p">Recette du jour</p>
             <h1>Gambas au curry</h1>
-            <p>Laissez vous tenter par notre sélection du jour
+            <p class="title_content">Laissez vous tenter par notre sélection du jour
                 à base de gambas et de curry.</p>
             <button class="btn hero-btn" type="button">
                 Découvrir
