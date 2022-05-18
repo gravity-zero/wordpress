@@ -2,16 +2,31 @@
 
 add_action( 'after_setup_theme', function () {
 	add_theme_support( 'title-tag' );
-} );
+});
 
 add_action( 'wp_head', function () {
 	echo '<link rel="icon" type="image/png" href="' . get_stylesheet_directory_uri() . '/assets/images/favicon.png"/>';
-} );
+});
 
+add_action('admin_post_nopriv_subscribe_newsletter', function(){
+   echo "toto";
+});
 
-add_action( 'admin_post_new_recette_form', function () {
-	if ( ! wp_verify_nonce( $_POST['random_nonce'], 'random_action' ) ) {
-		die( "C'est pas beau de ne pas passer par le formulaire" );
+add_action('admin_post_subscribe_newsletter', function () {
+
+    echo "je suce pour un carambar";
+});
+
+function subscribe_newsletter()
+{
+    if (!wp_verify_nonce($_POST['random_nonce'], 'random_action')){
+        die("C'est pas beau de ne pas passer par le formulaire");
+    }
+}
+
+add_action('admin_post_new_recette_form', function () {
+	if (!wp_verify_nonce($_POST['random_nonce'], 'random_action')){
+		die("C'est pas beau de ne pas passer par le formulaire");
 	}
 	//if(!current_user_can('manage_events')) die("Tu n'as pas les droits pour effectuer cette action");
 
@@ -60,6 +75,8 @@ function print_error_message($error): void
     echo "<div id='error_message'><h1>". $error ."</h1></div>";
 }
 
+add_action( 'template_redirect', 'get_custom_404' );
+
 function get_custom_404() {
 	if ( is_404() ) {
 		add_action( 'wp_enqueue_scripts', function () {
@@ -76,7 +93,7 @@ add_action( 'wp_enqueue_scripts', function () {
 
 
 
-add_action( 'template_redirect', 'get_custom_404' );
+
 
 add_action( 'wp_enqueue_scripts', function () {
 	wp_enqueue_style( 'ofourno-bootstrap-css', 'https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css' );
@@ -96,8 +113,31 @@ add_action('after_switch_theme', function(){
     add_role('moderator', 'moderator', [
         'manage_events' => true,
         'read' => true,
+        'write_posts' => true,
+        'edit_posts' => true,
+        'delete_posts' => true,
         'revisions' => true
     ]);
+});
+
+add_action("init", function() {
+    /*if ( is_user_logged_in() ) {
+        wp_redirect( home_url() );
+        exit();
+    }*/
+
+    if( $_SERVER["REQUEST_URI"] == "/login" || $_SERVER["REQUEST_URI"] == "/wp-login.php") {
+
+        get_template_part('page', 'login');
+        exit();
+    }
+
+    if($_SERVER["REQUEST_URI"] == "/register" || ($_GET && $_GET["action"] == "register"))
+    {
+        get_template_part('page', 'register');
+        exit();
+    }
+
 });
 
 add_action( 'init', function () {
@@ -139,15 +179,10 @@ add_action("load-post-new.php", 'load_recette_form');
 
 function load_recette_form()
 {
+
     if($_GET["post_type"] == "recette")
         wp_redirect(get_home_url(). "/ajouter-recette/");
 }
 
-add_action('login', function() {
 
-});
 
-add_filter('login_headerurl',
-    function ($header_url) {
-        return 'https://www.google.fr';
-    });

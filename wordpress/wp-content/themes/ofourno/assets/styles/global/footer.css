@@ -1,4 +1,31 @@
+footer{
+  display: flex;
+  justify-content: center;
+  margin-top: 200px;
+  bottom: 5%;
+  width: 100%;
+}
+
+footer form{
+  display: flex;
+}
+
+.subscriber_email_label{
+  font-weight: bold;
+  font-size: 20px;
+}
+
+#subscriber_email{
+  width: 350px;
+}
+
+.submit-button{
+  margin-left: 5px;
+  margin-top: 23px;
+}
+
 .btnNewsletter {
+
   height: 50px;
   width: 139px;
 }
