@@ -1,29 +1,18 @@
-</div>
-
 <?php wp_footer(); ?>
 
-<footer class="bg-light text-center text-lg-start">
-  <div class="container p-4 pb-0">
-    <form action="">
-      <div class="row">
-        <div class="col-auto mb-4 mb-md-0">
-          <p class="pt-2">
-            <strong>Sign up for our newsletter</strong>
-          </p>
+<footer class="footer-container">
+    <form action="<?= admin_url('admin-post.php'); ?>" method="post">
+        <input type="hidden" name="action" value="subscribe_newsletter">
+        <?php wp_nonce_field('random_action', 'random_nonce'); ?>
+        <?php wp_referer_field(); ?>
+        <div>
+            <label for="subscriber_email" class="subscriber_email_label">Inscrivez-vous à notre newsletter</label>
+            <input type="email" id="subscriber_email" name="subscriber_email" class="form-control" placeholder="Email"/>
         </div>
-        <div class="col-md-5 col-12 mb-4 mb-md-0">
-          <div class="form-outline mb-4">
-            <input type="email" id="form5Example25" class="form-control" placeholder="Email"/>
-          </div>
+        <div class="submit-button">
+            <button type="submit" class="btn btnNewsletter">Subscribe</button>
         </div>
-        <div class="col-auto mb-4 mb-md-0">
-          <button type="submit" class="btn btnNewsletter">
-            Subscribe
-          </button>
-        </div>
-      </div>
     </form>
-  </div>
 </footer>
 
 </body>

@@ -11,3 +11,33 @@
     display: flex;
     justify-content: center;
 }
+
+.card{
+    margin-right: 2px;
+}
+
+.card-img-top{
+    width: auto;
+}
+
+.hero-p{
+    color: white;
+}
+
+.title_content{
+    color:white;
+}
+
+.mini-images{
+    width: 120px;
+    margin-bottom: 3px;
+    border-radius: 2px;
+    max-width: 50vw;
+    max-height: 50vh;
+}
+
+.other-images-container{
+    display: flex;
+    flex-direction: column;
+    padding-top: 17px;
+}
