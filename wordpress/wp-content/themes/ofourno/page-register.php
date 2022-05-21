@@ -1,14 +1,15 @@
 <?php
 /**
  * Template Name: Register
- * Template Post Type: page
+ *
  */
+var_dump(is_404());
 ?>
 
 
 <?php get_header(); ?>
 
-<form class="loginForm"action="<?php echo home_url().'/register'; ?>" method="post" name="form">
+<form class="loginForm"action="<?php echo home_url().'/register'; ?>" method="post">
 
 		<div class="mb-3">
 			<input class="inputLogin" type="email" placeholder="Adresse email" name="user_email">
