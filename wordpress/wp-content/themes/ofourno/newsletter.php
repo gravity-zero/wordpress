@@ -43,7 +43,7 @@ function subscribe_newsletter()
     if(!$db_result) echo "Une erreur est survenu, nous n'avons pas réussi à vous inscrire, merci de réessayer ultérieurement";
 
     //TODO Show register confirmation + send email
-    wp_redirect(get_home_url());
+    wp_redirect(wp_get_referer() ?: get_home_url());
 }
 
 //TODO Unsubscibe

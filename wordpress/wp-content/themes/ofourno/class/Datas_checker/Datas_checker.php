@@ -144,13 +144,13 @@ class Datas_checker
         return true;
     }
 
-    private function max_lenght($data, $lenght_greater)
+    private function min_lenght($data, $lenght_greater)
     {
         if(strlen($data) < $lenght_greater) return false;
         return true;
     }
 
-    private function min_lenght($data, $lenght_lower)
+    private function max_lenght($data, $lenght_lower)
     {
         if(strlen($data) > $lenght_lower) return false;
         return true;

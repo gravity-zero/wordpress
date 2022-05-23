@@ -1,14 +1,10 @@
-<?php
-    // init var for header
-    $user = wp_get_current_user();
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <?php wp_head(); ?>
+<?php wp_head(); ?>
 </head>
 <body>
     <section class="header d-flex justify-content-between align-items-center">
@@ -20,9 +16,13 @@
 
 
         <?php if (is_user_logged_in()) : ?>
-            <?php global $current_user; get_currentuserinfo(); ?>
+            <?php global $current_user; wp_get_current_user(); ?>
+                <?php if($current_user->ID == 0): ?>
+                    <div>
+                        <h1 style="color: red;">ROGER WE'VE GOT A SITUATION</h1>
+                    </div>
+                <?php endif ?>
                 <div class="">
-                <!-- <span class="">Hello 👋</span> -->
                 <a class="button" href="<?= wp_logout_url('/') ?>">Déconnexion</a>
                 </div>
             <?php else : ?>
