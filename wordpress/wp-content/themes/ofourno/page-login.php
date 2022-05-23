@@ -3,9 +3,7 @@
  * Template Name: Login
  *
  */
-
 ?>
-
 <?php  get_header(); ?>
 
 <div class="login-container">

@@ -3,14 +3,15 @@
  * Template Name: Register
  *
  */
-var_dump(is_404());
 ?>
 
 
 <?php get_header(); ?>
 
-<form class="loginForm"action="<?php echo home_url().'/register'; ?>" method="post">
-
+<form class="loginForm" action="<?php echo home_url().'/register-treatment'; ?>" method="post">
+        <div class="mb-3">
+            <input class="inputLogin" type="text" placeholder="Login" name="user_login">
+        </div>
 		<div class="mb-3">
 			<input class="inputLogin" type="email" placeholder="Adresse email" name="user_email">
 		</div>
@@ -18,14 +19,10 @@ var_dump(is_404());
 			<input class="inputLogin" type="password" placeholder="Votre mot de passe" name="user_pass">
 		</div>
 		<div class="mb-3">
-			<input class="inputLogin" type="password" placeholder="Confirmez le mot de passe" name="user_pass">
+			<input class="inputLogin" type="password" placeholder="Confirmez le mot de passe" name="user_pass_check">
 		</div>
-	<div>
-		<a class="button">Mot de passe oublié ?</a>
-	</div>
-	<a href="/register">
+
 		<button class="btn btnLogin" type="submit" class="">S'inscrire</button>
-	</a>
 </form>
 
 <?php get_footer(); ?>
