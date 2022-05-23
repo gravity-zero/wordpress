@@ -12,7 +12,7 @@
             <div class="icon">
                 <a href="/"><img src="<?= home_url(); ?>/wp-content/uploads/2022/04/favicon.png" alt="ofourno logo'" /></a>
             </div>
-            <h1 class="title">Ôfourno</h1></div>     
+            <h1 class="title">Ôfourno</h1></div>
 
 
         <?php if (is_user_logged_in()) : ?>
@@ -22,10 +22,10 @@
                         <h1 style="color: red;">ROGER WE'VE GOT A SITUATION</h1>
                     </div>
                 <?php endif ?>
-                <div class="">
+                <div class="button">
                 <a class="button" href="<?= wp_logout_url('/') ?>">Déconnexion</a>
                 </div>
-            <?php else : ?>
+        <?php else : ?>
             <div class="me-4">
                 <a class="button me-4" href="/register">S'inscrire</a>
                 <a class="button" href="/login">Connexion</a>

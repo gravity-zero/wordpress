@@ -5,8 +5,6 @@ require_once "class/Datas_checker/Datas_checker.php";
 require_once "wp_db_handler.php";
 require_once "newsletter.php";
 
-add_filter('show_admin_bar', '__return_false');
-
 add_action('template_redirect', 'get_custom_404', 1);
 
 add_action("init", function()
@@ -192,6 +190,9 @@ function init_theme () {
 
 add_action('send_headers', function()
 {
+    add_action('template_redirect', function () {
+        ob_start();
+    });
     // Router un peu crado
     switch($_SERVER["REQUEST_URI"])
     {
@@ -208,7 +209,7 @@ add_action('send_headers', function()
                 get_template_part('page', 'login');
             }
             break;
-        case "/login" :
+        case "/login":
             get_template_part('page', 'login');
             break;
         case "/register":
@@ -216,6 +217,7 @@ add_action('send_headers', function()
             break;
         default:
             wp_redirect(get_home_url());
+            break;
     }
 }, 1);
 

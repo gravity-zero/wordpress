@@ -24,7 +24,7 @@
 		</div>
         <input type="hidden" name="redirect_to" value="<?= home_url() ?>">
     </form>
-
+    <br>
     <div class="register-redirection">Vous n'avez pas de compte ?
         <a href="/register" class="button">S'inscrire</a>
     </div>
