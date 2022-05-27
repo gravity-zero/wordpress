@@ -1,11 +1,10 @@
 <?php
 /**
- * Template Name: Login
+ * Template Name: login
  *
  */
 ?>
 <?php  get_header(); ?>
-
 <div class="login-container">
 
 	<form class="loginForm" action="<?= home_url()."/login-treatment" ?>" method="post">

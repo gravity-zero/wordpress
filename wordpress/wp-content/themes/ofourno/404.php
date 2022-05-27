@@ -1,4 +1,10 @@
+<?php
+/**
+ * Template Name: 404
+ */
+?>
 <?php get_header(); ?>
+
 
 	<div class="errorPageRap">
 		<div class="holoContainer">
@@ -222,5 +228,4 @@
 			Retourner à l'accueil <a href="<?= get_home_url() ?>">en cliquant ici</a>
 		</h1>
 	</div>
-
 <?php get_footer(); ?>

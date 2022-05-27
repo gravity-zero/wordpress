@@ -9,28 +9,25 @@
 <body>
     <section class="header d-flex justify-content-between align-items-center">
 
-            <div class="icon">
-                <a href="/"><img src="<?= home_url(); ?>/wp-content/uploads/2022/04/favicon.png" alt="ofourno logo'" /></a>
-            </div>
-            <h1 class="title">Ôfourno</h1></div>
-
-
-        <?php if (is_user_logged_in()) : ?>
-            <?php global $current_user; wp_get_current_user(); ?>
-                <?php if($current_user->ID == 0): ?>
-                    <div>
-                        <h1 style="color: red;">ROGER WE'VE GOT A SITUATION</h1>
-                    </div>
-                <?php endif ?>
-                <div class="button">
-                <a class="button" href="<?= wp_logout_url('/') ?>">Déconnexion</a>
+        <div class="icon">
+            <a href="/"><img src="<?= home_url(); ?>/wp-content/uploads/2022/04/favicon.png" alt="ofourno logo'" /></a>
+        </div>
+        <h1 class="title">Ôfourno</h1></div>
+    <?php if (is_user_logged_in()) : ?>
+        <?php global $current_user; wp_get_current_user(); ?>
+            <?php if($current_user->ID == 0): ?>
+                <div>
+                    <h1 style="color: red;">ROGER WE'VE GOT A SITUATION</h1>
                 </div>
-        <?php else : ?>
-            <div class="me-4">
-                <a class="button me-4" href="/register">S'inscrire</a>
-                <a class="button" href="/login">Connexion</a>
+            <?php endif ?>
+            <div class="button">
+            <a class="button" href="<?= wp_logout_url('/') ?>">Déconnexion</a>
             </div>
-        <?php endif; ?>
-
+    <?php else : ?>
+        <div class="me-4">
+            <a class="button me-4" href="/register">S'inscrire</a>
+            <a class="button" href="/login">Connexion</a>
+        </div>
+    <?php endif; ?>
     </section>
    

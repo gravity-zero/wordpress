@@ -4,8 +4,6 @@
  *
  */
 ?>
-
-
 <?php get_header(); ?>
 
 <form class="loginForm" action="<?php echo home_url().'/register-treatment'; ?>" method="post">
