@@ -5,8 +5,6 @@ require_once "class/Datas_checker/Datas_checker.php";
 require_once "wp_db_handler.php";
 require_once "newsletter.php";
 
-add_action('template_redirect', 'get_custom_404', 1);
-
 add_action("init", function()
 {
     init_theme();
@@ -24,17 +22,26 @@ add_action( 'wp_enqueue_scripts', function () {
     wp_enqueue_style( 'ofourno-bootstrap-css', 'https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css' );
     wp_enqueue_script( 'ofourno-bootstrap-js', 'https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js', [], false, true );
     wp_enqueue_style( 'ofourno-custom-css', get_stylesheet_directory_uri() . '/assets/styles/style.css' );
+    wp_enqueue_style( 'ofourno-404-css', get_stylesheet_directory_uri() . '/assets/css/404.css' );
+    wp_enqueue_script( 'ofourno-404-js', get_stylesheet_directory_uri() . '/assets/js/404.js', [], false, true );
 });
 
 add_action('after_switch_theme', function(){
     add_role('moderator', 'moderator', [
         'manage_events' => true,
-        'read' => true,
-        'write_posts' => true,
-        'edit_posts' => true,
-        'delete_posts' => true,
-        'revisions' => true
+        'read'  => true,
+        'delete_posts'  => true,
+        'delete_published_posts' => true,
+        'edit_posts'   => true,
+        'publish_posts' => true,
+        'upload_files'  => true,
+        'edit_pages'  => true,
+        'edit_published_pages'  =>  true,
+        'publish_pages'  => true,
+        'delete_published_pages' => false
     ]);
+
+    flush_rewrite_rules();
 });
 
 function ofourno_theme_support() {
@@ -45,6 +52,7 @@ function ofourno_theme_support() {
         show_admin_bar( false );
     }
 }
+
 
 function login_treatment($datas){
     if ($datas) {
@@ -125,7 +133,6 @@ add_action('admin_post_new_recette_form', function () {
 				$file = array(
 					'name' => $images['name'][$i],
 					'type' => $images['type'][$i],
-					'full_path' => $images['full_path'][$i],
 					'tmp_name' => $images['tmp_name'][$i],
 					'error' => $images['error'][$i],
 					'size' => $images['size'][$i]
@@ -143,14 +150,8 @@ add_action('admin_post_new_recette_form', function () {
 			}
 		}
     wp_redirect( get_post_permalink( $postId ) );
+        die();
 });
-
-add_action("load-post-new.php", 'load_recette_form');
-
-function load_recette_form()
-{
-    if($_GET["post_type"] == "recette") wp_redirect(get_home_url(). "/ajouter-recette/");
-}
 
 function init_theme () {
 
@@ -187,37 +188,33 @@ function init_theme () {
     register_post_type('recette', $postArgs);
 };
 
-
-add_action('send_headers', function()
-{
-    add_action('template_redirect', function () {
-        ob_start();
-    });
-    // Router un peu crado
-    switch($_SERVER["REQUEST_URI"])
+add_action("load-page-new.php", function(){
+    switch($_GET["post_type"])
     {
-        case "/login-treatment":
-            login_treatment($_POST);
+        case "recette":
+            wp_redirect(get_home_url(). "/ajouter-recette");
             break;
-        case "/register-treatment":
-            register_treatment($_POST);
+        case "login":
+            wp_redirect(get_home_url() . "/login");
             break;
-        case "wp-login.php":
-            if(isset($_GET) && $_GET["action"] == "register"){
-                get_template_part('page', 'register');
-            }else{
-                get_template_part('page', 'login');
-            }
-            break;
-        case "/login":
-            get_template_part('page', 'login');
-            break;
-        case "/register":
-            get_template_part('page', 'register');
-            break;
-        default:
-            wp_redirect(get_home_url());
+        case "register":
+            wp_redirect(get_home_url(). "/register");
             break;
     }
-}, 1);
+});
 
+switch($_SERVER["REQUEST_URI"]) {
+    case "/login-treatment":
+        login_treatment($_POST);
+        break;
+    case "/register-treatment":
+        register_treatment($_POST);
+        break;
+    case "wp-login.php":
+        if (isset($_GET) && $_GET["action"] == "register") {
+            wp_redirect(get_home_url(). "/register");
+        } else {
+            wp_redirect(get_home_url() . "/login");
+        }
+        break;
+}

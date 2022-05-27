@@ -1,7 +1,7 @@
 <?php
 
 get_header(); ?>
-
+<div class="ReceipContainer">
     <form class="formReceip" action="<?= admin_url('admin-post.php'); ?>" method="post" enctype="multipart/form-data">
         <input type="hidden" name="action" value="new_recette_form">
         <?php wp_nonce_field('random_action', 'random_nonce'); ?>
@@ -26,4 +26,5 @@ get_header(); ?>
         <input class="btn btnSubmit" type="submit" value="Soumettre">
         </div>
     </form>
+</div>
 <?php get_footer(); ?>

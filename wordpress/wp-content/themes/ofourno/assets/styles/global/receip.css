@@ -1,4 +1,10 @@
+.ReceipContainer{
+  display: flex;
+  justify-content: center;
+}
+
 .formReceip {
+  text-align: center;
   width: 40%;
   margin: 40px;
 }

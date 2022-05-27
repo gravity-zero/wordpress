@@ -1,9 +1,6 @@
-html {
+.errorPageRap {
     background: #f7f9ff;
     font-size: 10px;
-}
-
-.errorPageRap {
     text-align: center;
     margin: 5rem 0 13rem 0;
 }
