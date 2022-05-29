@@ -113,7 +113,7 @@ add_action('admin_post_new_recette_form', function () {
 	if (!wp_verify_nonce($_POST['random_nonce'], 'random_action')){
 		die("C'est pas beau de ne pas passer par le formulaire");
 	}
-	//if(!current_user_can('manage_events')) die("Tu n'as pas les droits pour effectuer cette action");
+	if(!is_user_logged_in()) die("Tu n'as pas les droits pour effectuer cette action");
 
 	$post_args = [
         'post_type'       => 'recette',
@@ -188,7 +188,30 @@ function init_theme () {
     register_post_type('recette', $postArgs);
 };
 
+function recette_comment() {
+    var_dump($_POST);
+    die();
+
+    if (!wp_verify_nonce($_POST['random_nonce'], 'random_action')){
+        die("C'est pas beau de ne pas passer par le formulaire");
+    }
+    //wp_new_comment();
+    if( $data['post_type'] == 'recette_comment_form' ) {
+        $data['comment_status'] = 1;
+    }
+
+    return $data;
+}
+
+add_action('admin_post_recette_comment_form', 'recette_comment');
+
+add_action('admin_post_nopriv_recette_comment_form', 'recette_comment');
+
+
+
+
 add_action("load-page-new.php", function(){
+    //Page create inside admin pannel
     switch($_GET["post_type"])
     {
         case "recette":
@@ -203,6 +226,12 @@ add_action("load-page-new.php", function(){
     }
 });
 
+add_action("post-new.php", function(){
+   if($_GET["post_type"] == "recette")  wp_redirect(get_home_url(). "/ajouter-recette");
+    die;
+});
+
+//
 switch($_SERVER["REQUEST_URI"]) {
     case "/login-treatment":
         login_treatment($_POST);

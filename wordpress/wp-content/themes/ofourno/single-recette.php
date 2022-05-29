@@ -1,7 +1,8 @@
 <?php get_header(); ?>
-<div class="single-recette">
+
 <?php if (have_posts()) : ?>
 	<?php while (have_posts()) : ?>
+<div class="single-recette">
 		<?php the_post(); ?>
 
         <?php $images = get_children( array (
@@ -28,8 +29,11 @@
                 <?php endforeach; ?>
             <?php endif ?>
         </div>
-
-	<?php endwhile; ?>
-<?php endif; ?>
 </div>
+        <?php comments_template('/comment-recette.php', true); ?>
+	<?php endwhile; ?>
+
+<?php endif; ?>
+
+
 <?php get_footer(); ?>

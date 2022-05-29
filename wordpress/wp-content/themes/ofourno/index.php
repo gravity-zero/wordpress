@@ -13,7 +13,7 @@
 
 	</div>
 
-<?php if($_SERVER['REQUEST_URI'] !== get_home_url(). "/ajouter-recette/"): ?>
+<?php if($_SERVER['REQUEST_URI'] !== get_home_url(). "/ajouter-recette/" && is_user_logged_in()): ?>
 	<div class=" me-4 d-flex justify-content-end">
 		<a href="<?= get_home_url(). "/ajouter-recette/" ?>">
 			<button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -58,6 +58,7 @@
 	</div>
 
 <?php endif; ?>
+
 
 
 <?php get_footer(); ?>

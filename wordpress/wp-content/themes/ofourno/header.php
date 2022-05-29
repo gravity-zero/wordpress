@@ -15,14 +15,11 @@
         <h1 class="title">Ôfourno</h1></div>
     <?php if (is_user_logged_in()) : ?>
         <?php global $current_user; wp_get_current_user(); ?>
-            <?php if($current_user->ID == 0): ?>
-                <div>
-                    <h1 style="color: red;">ROGER WE'VE GOT A SITUATION</h1>
-                </div>
-            <?php endif ?>
+            <?php if($current_user->ID !== 0): ?>
             <div class="button">
             <a class="button" href="<?= wp_logout_url('/') ?>">Déconnexion</a>
             </div>
+            <?php endif ?>
     <?php else : ?>
         <div class="me-4">
             <a class="button me-4" href="/register">S'inscrire</a>
