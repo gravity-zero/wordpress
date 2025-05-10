@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Register
+ * Template Name: register
  *
  */
 ?>
