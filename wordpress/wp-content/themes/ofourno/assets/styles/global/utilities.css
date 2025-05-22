@@ -1,52 +1,43 @@
-.button {
-  color: black;
+.btn {
+  background-color: var(--main-color);
+  color: var(--white-color);
   text-decoration: none;
-  font-size: 18px;
-  font-weight: 400;
+  font-size: 14px;
+  height: 52px;
+  width: 231px;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  border-radius: 16px;
   cursor: pointer;
+  outline: none;
+  border: none !important;
+  font-family: var(--font-extra-bold);
 }
 
-.button:hover {
-  color: #dd7d85 !important;
-  text-decoration: underline;
+.btn:hover {
+  color: var(--white-color);
+  font-family: var(--font-extra-bold);
+  background-color: var(--main-color);
+  text-decoration: none;
 }
-
-/* TITLE AND TEXTS */
-/* Donc pour tous les h1 h2 p ... etc on applique ces valeurs? T_T */
 
 h1 {
-  font-weight: 600;
-  font-size: 23px;
   margin-bottom: 0;
-  color : white;
+  color : var(--white-color);
 }
 
 h2 {
-  font-weight: 600;
-  font-size: 18px;
   margin-bottom: 0;
 }
 
 p {
   color : black;
   font-weight : 400;
-  font-size: 16px;
 }
 
-
-/* .card-text {
-  margin-bottom: 12px;
-} */
-
-.btn {
-  background-color: #dd7d85 !important;
-  outline: none;
-  border: none !important;
-  font-size: 14px !important;
-  color: white !important;
-  height: 52px;
-  width: 231px;
-  padding: 0;
-  text-transform: uppercase;
-  border-radius: 16px;
+a {
+  text-decoration: none;
 }

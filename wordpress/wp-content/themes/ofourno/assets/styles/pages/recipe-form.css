@@ -1,0 +1,105 @@
+.recipeContainer{
+  display: flex;
+  justify-content: center;
+}
+
+.formRecipe {
+  text-align: center;
+  width: 50%;
+  margin: 40px;
+}
+
+.btnSubmit {
+  width: 157px;
+  height: 53px;
+  margin-top: 70px;
+}
+
+.remove-img {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  background-color: red;
+  color: var(--white-color);
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 5px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  text-align: center;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.remove-img:hover {
+  background-color: darkred;
+}
+
+/*checkbox*/
+
+.meal-checkbox-group {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.custom-checkbox {
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    border: 2px solid #ccc;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.custom-checkbox:checked {
+    background-color: var(--main-color, #dd7d85);
+    border-color: var(--main-color, #dd7d85);
+    transition: all 0.3s ease;
+}
+
+.custom-checkbox:checked + .form-check-label {
+    color: var(--main-color, #dd7d85);
+}
+
+.form-label-main-meal {
+  padding: 0 !important;
+}
+
+input[type="checkbox"] {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.form-check-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+    cursor: pointer;
+    display: inline-block;
+    padding-left: 10px;
+    transition: color 0.3s ease;
+    margin-bottom: 5px;
+}
+
+.form-check-label:hover {
+    color: var(--main-color, #dd7d85);
+}
+
+.form-check {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.form-check-input:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(92, 107, 192, 0.6);
+}
+

@@ -1,6 +1,6 @@
 <?php get_header(); ?>
-<div class="ReceipContainer">
-    <form class="formReceip row" action="<?= admin_url('admin-post.php'); ?>" method="post" enctype="multipart/form-data">
+<div class="recipeContainer">
+    <form class="formRecipe row" action="<?= admin_url('admin-post.php'); ?>" method="post" enctype="multipart/form-data">
         <input type="hidden" name="action" value="new_recipe_form">
         <?php wp_nonce_field('random_action', 'random_nonce'); ?>
         <?php wp_referer_field(); ?>
@@ -27,11 +27,16 @@
                 <label for="difficulty">Difficulté</label>
             </div>
 
+            <div class="form-floating mb-3">
+                <input type="time" class="form-control" id="duration" name="duration" value="00:30" />
+                <label for="duration">Temps de préparation</label>
+            </div>
+
             <hr class="my-4">
 
             <div class="form-floating mb-3" id="steps-list">
-                <input type="text" class="form-control" id="step-input" name="steps[]" placeholder="Ajouter une étape">
-                <label for="step-input" id="steps-label">Etapes</label>
+                <input type="text" class="form-control" id="step-input" name="steps[]" placeholder="Étapes">
+                <label for="step-input" id="steps-label">Étapes</label>
             </div>
             
             <div class="d-flex gap-3 mb-3">
@@ -57,6 +62,37 @@
                 <label for="cost">Coût</label>
             </div>
 
+            <div class="form-floating mb-3">
+                <label class="form-label-main-meal" for="meal_type">Type(s) de repas</label><br>
+
+                <div class="meal-checkbox-group">
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input custom-checkbox" id="breakfast" name="meal_type[]" value="breakfast">
+                        <label class="form-check-label" for="breakfast">Petit-déjeuner</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input custom-checkbox" id="lunch" name="meal_type[]" value="lunch">
+                        <label class="form-check-label" for="lunch">Déjeuner</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input custom-checkbox" id="snack" name="meal_type[]" value="snack">
+                        <label class="form-check-label" for="snack">Goûter</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input custom-checkbox" id="dinner" name="meal_type[]" value="dinner">
+                        <label class="form-check-label" for="dinner">Dîner</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input custom-checkbox" id="totry" name="meal_type[]" value="totry">
+                        <label class="form-check-label" for="totry">À essayer</label>
+                    </div>
+                </div>
+            </div>
+
             <hr class="my-4">
 
             <div class="form-floating mb-3" id="ingredient-list">
@@ -69,8 +105,8 @@
                         <select class="form-control ingredient-unit" name="unit[]" placeholder="Unité">
                             <option value="nb">Unité</option>
                             <option value="cuillères">Cuillères</option>
-                            <option value="ml">ML</option>
-                            <option value="cl">CL</option>
+                            <option value="ml">ml</option>
+                            <option value="cl">cl</option>
                             <option value="L">L</option>
                             <option value="g">Grammes</option>
                             <option value="Kg">Kg</option>
@@ -86,7 +122,7 @@
         </div>
 
         <div class="col-12 mt-3">
-            <input class="btn btnSubmit" type="submit" value="Soumettre">
+            <input class="btn btnSubmit" type="submit" value="Publier">
         </div>
     </form>
 </div>
@@ -105,47 +141,47 @@
         }
     }
 
-document.getElementById('images').addEventListener('change', function(event) {
-    const files = event.target.files;
-    const previewContainer = document.getElementById('image-preview-container');
-    previewContainer.innerHTML = '';
+    document.getElementById('images').addEventListener('change', function(event) {
+        const files = event.target.files;
+        const previewContainer = document.getElementById('image-preview-container');
+        previewContainer.innerHTML = '';
 
-    for (const file of files) {
-        const reader = new FileReader();
+        for (const file of files) {
+            const reader = new FileReader();
 
-        reader.onload = function(e) {
-            const imgContainer = document.createElement('div');
-            imgContainer.classList.add('img-container', 'position-relative', 'me-3', 'mb-3');
+            reader.onload = function(e) {
+                const imgContainer = document.createElement('div');
+                imgContainer.classList.add('img-container', 'position-relative', 'me-3', 'mb-3');
 
-            const img = document.createElement('img');
-            img.src = e.target.result;
-            img.classList.add('img-thumbnail');
-            img.style.maxWidth = '150px';
-            img.style.height = 'auto';
+                const img = document.createElement('img');
+                img.src = e.target.result;
+                img.classList.add('img-thumbnail');
+                img.style.maxWidth = '150px';
+                img.style.height = 'auto';
 
-            const removeBtn = document.createElement('span');
-            removeBtn.classList.add('remove-img');
-            removeBtn.appendChild(document.createTextNode('X'));
+                const removeBtn = document.createElement('span');
+                removeBtn.classList.add('remove-img');
+                removeBtn.appendChild(document.createTextNode('X'));
 
-            imgContainer.appendChild(img);
-            imgContainer.appendChild(removeBtn);
-            previewContainer.appendChild(imgContainer);
+                imgContainer.appendChild(img);
+                imgContainer.appendChild(removeBtn);
+                previewContainer.appendChild(imgContainer);
 
-            removeBtn.addEventListener('click', function() {
-                imgContainer.remove();
-                const dataTransfer = new DataTransfer();
-                Array.from(event.target.files).forEach(f => {
-                    if (f.name !== file.name) {
-                        dataTransfer.items.add(f);
-                    }
+                removeBtn.addEventListener('click', function() {
+                    imgContainer.remove();
+                    const dataTransfer = new DataTransfer();
+                    Array.from(event.target.files).forEach(f => {
+                        if (f.name !== file.name) {
+                            dataTransfer.items.add(f);
+                        }
+                    });
+                    event.target.files = dataTransfer.files;
                 });
-                event.target.files = dataTransfer.files;
-            });
-        }
+            }
 
-        reader.readAsDataURL(file);
-    }
-});
+            reader.readAsDataURL(file);
+        }
+    });
 
 
 

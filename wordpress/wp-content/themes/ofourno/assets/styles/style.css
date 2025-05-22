@@ -1,44 +1,57 @@
-@import "../styles/global/utilities.css";
-@import "../styles/global/header.css";
-@import "../styles/global/hero.css";
-@import "../styles/global/receip.css";
-@import "../styles/global/receipCard.css";
-@import "../styles/global/comments.css";
-@import "../styles/global/login.css";
-@import "../styles/global/footer.css";
+@import "./global/utilities.css";
+@import "./global/header.css";
+@import "./global/hero.css";
+@import "./global/footer.css";
 
-
-.single-recette{
-    display: flex;
-    justify-content: center;
+@font-face {
+    font-family: "Roboto-Bold";
+    src: url("../fonts/Roboto-Bold.ttf") format("truetype");
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Roboto-Bold-Italic";
+    src: url("../fonts/Roboto-BoldItalic.ttf") format("truetype");
+    font-weight: bold;
+    font-style: italic;
+}
+@font-face {
+    font-family: "Roboto-Extra-Bold";
+    src: url("../fonts/Roboto-ExtraBold.ttf") format("truetype");
+    font-weight: 800;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Roboto-Regular";
+    src: url("../fonts/Roboto-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
 }
 
-.card{
-    margin-right: 2px;
+:root {
+    --main-color: #dd7d85;
+    --white-color: white;
+    --image-radius: calc(.25rem - 1px);
+    --font-primary: "Roboto-Regular", sans-serif;
+    --font-bold: "Roboto-Bold", sans-serif;
+    --font-extra-bold: "Roboto-Extra-Bold", sans-serif;
+    --font-italic-bold: "Roboto-Bold", sans-serif;
 }
 
-.card-img-top{
-    width: auto;
+html, body {
+    font-family: var(--font-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-.hero-p{
-    color: white;
+b, strong {
+    font-family: var(--font-bold);
 }
 
-.title_content{
-    color:white;
+i {
+    font-family: var(--font-italic-bold);
 }
 
-.mini-images{
-    width: 120px;
-    margin-bottom: 3px;
-    border-radius: 2px;
-    max-width: 50vw;
-    max-height: 50vh;
-}
-
-.other-images-container{
-    display: flex;
-    flex-direction: column;
-    padding-top: 17px;
+.hero-p {
+    color: var(--white-color);
 }

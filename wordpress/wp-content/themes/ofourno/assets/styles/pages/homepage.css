@@ -1,0 +1,248 @@
+body {
+    overflow-x: hidden;
+}
+
+.card {
+    width: 25vw;
+    height: auto;
+    margin: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: var(--white-color);
+}
+
+.container {
+    padding: 0;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+}
+
+.title_content {
+    color: var(--white-color);
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: var(--white-color);
+}
+
+.card-title {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #333;
+}
+
+.difficult-cost {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 1.1rem;
+}
+
+.difficult-cost span {
+    font-weight: bold;
+}
+
+.steps.title {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 30px;
+}
+
+.ingredients.title {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 30px;
+}
+
+.ingredients.list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .ingredients.list li {
+    width: 25%;
+    box-sizing: border-box;
+    padding: 0.5rem;
+  }
+  
+  @media (max-width: 768px) {
+    .ingredients.list li {
+      width: 50%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .ingredients.list li {
+      width: 100%;
+    }
+  }
+
+.line{
+    border: 1px solid black;
+    width: 100%;
+    align-self: center;
+    margin-left: 5px;
+}
+
+.card{
+    margin-right: 2px;
+}
+
+.card-img-top {
+    width: auto;
+    height: 50%;
+    border-radius: var(--image-radius);
+}
+
+.other-images-container {
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+    flex-direction: column;
+    padding-top: 17px;   
+}
+
+.single-recipe{
+    display: flex;
+    justify-content: center;
+}
+
+.mini-images {
+    width: 120px;
+    margin-bottom: 3px;
+    border-radius: 2px;
+    max-width: 50vw;
+    max-height: 50vh;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    margin-right: 15px;
+    margin-bottom: 10px;
+}
+
+.mini-images:hover {
+    transform: scale(1.05);
+}
+
+.linkBtn {
+    bottom: 12px;
+}
+
+.btnInfo {
+    height: 48px;
+    width: 174px;
+    right: 8px;
+}
+
+.recipe-icon-inline {
+    color: var(--main-color) !important;
+    display: inline-block;
+    align-self: middle;
+}
+
+.recipe-icon-inline svg {
+    width: 30px;
+    height: auto;
+    vertical-align: middle;
+}
+
+.recipe-icon-inline.whip svg{
+    transform: rotate(180deg);
+    transform-origin: center center;
+}
+
+.recipe-taxonomies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.taxonomy-tag {
+    background-color: #f2f2f2;
+    color: #333;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    border: 1px solid #ddd;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.taxonomy-tag:hover {
+    background-color: var(--main-color, #dd7d85);
+    color: white;
+}
+
+.pagination {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.pagination .prev, .pagination .next {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--main-color, #dd7d85);
+    color: #333;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-decoration: none;
+    margin: 0 10px;
+    color: var(--white-color);
+}
+
+.pagination .prev:hover, .pagination .next:hover {
+    background-color: #333;
+    color: var(--white-color);
+}
+
+.pagination .current {
+    background-color: var(--main-color, #dd7d85);
+    color: var(--white-color);
+    border: 1px solid var(--main-color, #dd7d85);
+    border-radius: 50%;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 8px 15px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+}
+
+.pagination a, .pagination .prev, .pagination .next {
+    margin: 0 5px;
+    text-align: center;
+}
+
+.pagination a {
+    border-radius: 20px;
+    padding: 5px 15px;
+    text-decoration: none;
+    color: #333;
+    font-weight: normal;
+}
+
+.pagination a:hover {
+    background-color: #f0f0f0;
+}
+

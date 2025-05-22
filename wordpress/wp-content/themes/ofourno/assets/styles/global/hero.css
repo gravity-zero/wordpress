@@ -1,14 +1,13 @@
 .hero {
   height: 60vh;
   width: 100vw;
-  background-image: url("../../../../../uploads/2022/04/hero.png");
+  background-image: url("../../images/hero.png");
   background-size: cover;
   background-repeat: no-repeat;
   margin-bottom: 4%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-
 }
 
 .hero-text {

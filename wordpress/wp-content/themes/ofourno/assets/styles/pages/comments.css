@@ -1,0 +1,139 @@
+.comment-separation {
+    margin-top: 5%;
+}
+
+.comment-title {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2rem;
+    color: #333;
+}
+
+.comment-form {
+    width: 60%;
+    max-width: 80vw;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.comment-form .form-group label {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #444;
+}
+
+.comment-form .form-control {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    color: #333;
+}
+
+.comment-form .form-control:focus {
+    border-color: var(--main-color);
+    outline: none;
+}
+
+.comment-form button {
+    background-color: var(--main-color);
+    color: var(--white-color);
+    padding: 8px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.comment-form button:hover {
+    background-color: var(--main-color);
+}
+
+.comments-container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: var(--white-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.comments-title {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.comment-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.comment-list li {
+    border-bottom: 1px solid var(--white-color);
+    padding: 15px 0;
+    display: flex;
+    align-items: flex-start;
+}
+
+.comment-list .comment-author {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.comment-list .comment-meta {
+    font-size: 0.9rem;
+    color: #777;
+}
+
+.comment-list .comment-content {
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+.comment-list .comment-content p {
+    margin: 0;
+}
+
+.comment-list .comment-reply-link {
+    font-size: 0.9rem;
+    color: var(--main-color);
+    text-decoration: none;
+}
+
+.comment-list .comment-reply-link:hover {
+    text-decoration: none;
+}
+
+.no-comments {
+    text-align: center;
+    font-style: italic;
+    color: #999;
+}
+
+a {
+    color: var(--main-color);
+}
+
+@media (max-width: 768px) {
+    .comment-form, .comments-container {
+        padding: 15px;
+    }
+
+    .comment-form .col-md-6 {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+    
+    .comment-form button {
+        width: 100%;
+        padding: 8px 15px;
+    }
+}
